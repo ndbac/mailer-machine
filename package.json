@@ -4,7 +4,9 @@
   "description": "Tool to send multiple custom email",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "html": "node server.js --csvFile=input.csv --isHtmlMail=true",
+    "text": "node server.js --csvFile=input.csv --isHtmlMail=false"
   },
   "author": "bacrr",
   "license": "ISC",
