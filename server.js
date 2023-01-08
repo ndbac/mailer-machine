@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 const csvToJson = require("csvToJson");
 const minimist = require("minimist");
 const path = require("path");
+const _ = require("lodash");
 const { content } = require("./content");
 
 const sendMail = async ({
