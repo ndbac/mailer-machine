@@ -1,1 +1,1 @@
-export const content = `Put html file or plain text here`;
+module.exports = { content: `Put html file or plain text here` };
