@@ -1,0 +1,1 @@
+export const content = `Put html file or plain text here`;
