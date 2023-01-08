@@ -2,6 +2,7 @@ require("dotenv").config();
 const nodemailer = require("nodemailer");
 const csvToJson = require("csvToJson");
 const minimist = require("minimist");
+const path = require("path");
 const { content } = require("./content");
 
 const sendMail = async ({
