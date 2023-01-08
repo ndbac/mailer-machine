@@ -15,28 +15,23 @@ const sendMail = async ({
   const mailOptions = {
     from: process.env.CUSTOM_MAIL_NAME || process.env.EMAIL,
     to: recipientMail,
-    subject: `Message from ${req.body.email}: ${req.body.subject}`,
-    text: req.body.message,
-    html: req.body.html,
+    subject: `Put your email subject here`,
+    text: content,
+    html: content,
   };
-
-  await transporter.sendMail(
-    {
+  try {
+    await transporter.sendMail({
       ...mailOptions,
-      text: isHtmlMail ? undefined : content,
-      html: isHtmlMail ? content : undefined,
-    },
-    function (error, info) {
-      if (error) {
-        console.error(
-          `Failed to send mail to ${recipientMail} (${recipientName})!`,
-          error
-        );
-      } else {
-        console.log(`Email sent to ${recipientMail} (${recipientName})!`);
-      }
-    }
-  );
+      text: isHtmlMail == "true" ? undefined : content,
+      html: isHtmlMail == "true" ? content : undefined,
+    });
+    console.log(`Email sent to ${recipientMail} (${recipientName})!`);
+  } catch (error) {
+    console.error(
+      `Failed to send mail to ${recipientMail} (${recipientName})!`,
+      error
+    );
+  }
 };
 
 const parseCommandArgs = (opts, selectKeys) => {
@@ -50,6 +45,7 @@ const parseCommandArgs = (opts, selectKeys) => {
 // node server.js --csvFile=input.csv --isHtmlMail=true
 // csv file must have 2 columns name 'email' and 'name' indicate for recipient email and name
 const run = async () => {
+  console.log("Starting sending email...");
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -75,6 +71,7 @@ const run = async () => {
       });
     })
   );
+  console.log("Finishing sending email...");
 };
 
 run()
