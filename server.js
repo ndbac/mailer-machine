@@ -40,7 +40,7 @@ const sendMail = async ({
 };
 
 const parseCommandArgs = (opts, selectKeys) => {
-  const res = minimist < T > (process.argv.slice(2), opts);
+  const res = minimist(process.argv.slice(2), opts);
   if (!selectKeys) {
     return res;
   }
