@@ -19,7 +19,7 @@ const sendMail = async ({
     html: req.body.html,
   };
 
-  transporter.sendMail(
+  await transporter.sendMail(
     {
       ...mailOptions,
       text: isHtmlMail ? undefined : content,
