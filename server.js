@@ -19,6 +19,12 @@ const sendMail = async ({
     subject: `Put your email subject here`,
     text: content,
     html: content,
+    // uncomment these lines below if you want to send an email with attachments
+    /*
+    attachments: [{
+      path: 'vietnam-flag.webp' // put your file path here
+    }],
+    */
   };
   try {
     await transporter.sendMail({
